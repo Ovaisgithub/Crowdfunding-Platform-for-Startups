@@ -6,7 +6,7 @@
 
 # 
 
-# \## 🚀 Features
+# \##  Features
 
 # 
 
@@ -52,7 +52,7 @@
 
 # 
 
-# \## 🛠 Tech Stack
+# \##  Tech Stack
 
 # 
 
@@ -86,7 +86,7 @@
 
 # 
 
-# \## 📋 Prerequisites
+# \##  Prerequisites
 
 # 
 
@@ -100,7 +100,7 @@
 
 # 
 
-# \## 🔧 Installation \& Setup
+# \##  Installation \& Setup
 
 # 
 
@@ -192,7 +192,7 @@
 
 # 
 
-# \## 📖 API Documentation
+# \##  API Documentation
 
 # 
 
@@ -232,7 +232,7 @@
 
 # 
 
-# \## 🗂 Project Structure
+# \##  Project Structure
 
 # 
 
@@ -288,7 +288,7 @@
 
 # 
 
-# \## 🔐 Security Features
+# \##  Security Features
 
 # 
 
@@ -306,7 +306,7 @@
 
 # 
 
-# \## 🚀 Deployment
+# \##  Deployment
 
 # 
 
@@ -338,7 +338,7 @@
 
 # 
 
-# \## 🤝 Contributing
+# \##  Contributing
 
 # 
 
@@ -354,7 +354,7 @@
 
 # 
 
-# \## 📝 License
+# \##  License
 
 # 
 
@@ -362,7 +362,7 @@
 
 # 
 
-# \## 📧 Contact
+# \##  Contact
 
 # 
 
