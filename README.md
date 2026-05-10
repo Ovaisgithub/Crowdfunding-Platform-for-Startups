@@ -1,380 +1,161 @@
-# \# Crowdfunding Platform
+# Crowdfunding Platform for Startups
 
-# 
+A full-stack web application that connects startups with investors. Startups can create and manage funding campaigns, investors can browse and contribute, and admins oversee the entire platform with approval controls.
 
-# A full-stack crowdfunding platform that connects startups with investors. Built with Spring Boot backend and React frontend, featuring secure authentication, campaign management, and payment integration.
+**GitHub:** https://github.com/Ovaisgithub/crowdfunding-platform
 
-# 
+---
 
-# \##  Features
+## Tech Stack
 
-# 
-
-# \### User Management
-
-# \- \*\*Role-based Authentication\*\*: Support for Investors and Startups with JWT tokens
-
-# \- \*\*Secure Registration \& Login\*\*: Password hashing and session management
-
-# \- \*\*User Types\*\*: Separate dashboards and permissions for different user roles
-
-# 
-
-# \### Campaign Management
-
-# \- \*\*Create Campaigns\*\*: Startups can create and manage crowdfunding campaigns
-
-# \- \*\*Campaign Approval\*\*: Admin oversight for campaign publishing
-
-# \- \*\*Status Tracking\*\*: Campaigns can be PENDING, ACTIVE, or COMPLETED
-
-# \- \*\*Category Organization\*\*: Organize campaigns by technology, health, education, etc.
-
-# 
-
-# \### Investment \& Contributions
-
-# \- \*\*Multi-currency Support\*\*: Support for INR, USD, and EUR
-
-# \- \*\*Secure Payments\*\*: Integrated with Razorpay payment gateway
-
-# \- \*\*Contribution Tracking\*\*: Monitor funding progress in real-time
-
-# 
-
-# \### Subscription System
-
-# \- \*\*Flexible Plans\*\*: 3, 6, and 12-month subscription options
-
-# \- \*\*Role-specific Pricing\*\*: Different pricing for Investors and Startups
-
-# \- \*\*Payment Integration\*\*: Seamless subscription management
-
-# 
-
-# \##  Tech Stack
-
-# 
-
-# \### Backend
-
-# \- \*\*Framework\*\*: Spring Boot 3.2.0
-
-# \- \*\*Language\*\*: Java 17
-
-# \- \*\*Database\*\*: MySQL 8
-
-# \- \*\*Security\*\*: Spring Security with JWT
-
-# \- \*\*Payments\*\*: Razorpay Java SDK
-
-# \- \*\*ORM\*\*: JPA/Hibernate
-
-# 
-
-# \### Frontend
-
-# \- \*\*Framework\*\*: React 19
-
-# \- \*\*Build Tool\*\*: Vite
-
-# \- \*\*Routing\*\*: React Router DOM
-
-# \- \*\*HTTP Client\*\*: Axios
-
-# \- \*\*Styling\*\*: CSS Modules
-
-# 
-
-# \##  Prerequisites
-
-# 
-
-# \- Java 17 or higher
-
-# \- Node.js 18+ and npm
-
-# \- MySQL 8.0+
-
-# \- Maven 3.6+
-
-# 
-
-# \##  Installation \& Setup
-
-# 
-
-# \### Backend Setup
-
-# 
-
-# 1\. \*\*Clone the repository\*\*
-
-# &#x20;  ```bash
-
-# &#x20;  git clone <your-repo-url>
-
-# &#x20;  cd crowdfunding-platform
-
-# &#x20;  ```
-
-# 
-
-# 2\. \*\*Database Setup\*\*
-
-# &#x20;  - Install MySQL and create a database named `crowdfunding\_db`
-
-# &#x20;  - Update database credentials in `backend/crowdfunding-api/src/main/resources/application.properties`
-
-# 
-
-# 3\. \*\*Configure Razorpay\*\* (Optional for payments)
-
-# &#x20;  - Get API keys from Razorpay dashboard
-
-# &#x20;  - Update keys in `application.properties`
-
-# 
-
-# 4\. \*\*Build and Run\*\*
-
-# &#x20;  ```bash
-
-# &#x20;  cd backend/crowdfunding-api
-
-# &#x20;  mvn clean install
-
-# &#x20;  mvn spring-boot:run
-
-# &#x20;  ```
-
-# 
-
-# The backend will start on `http://localhost:8080/api`
-
-# 
-
-# \### Frontend Setup
-
-# 
-
-# 1\. \*\*Navigate to frontend directory\*\*
-
-# &#x20;  ```bash
-
-# &#x20;  cd frontend/crowdfunding-app
-
-# &#x20;  ```
-
-# 
-
-# 2\. \*\*Install dependencies\*\*
-
-# &#x20;  ```bash
-
-# &#x20;  npm install
-
-# &#x20;  ```
-
-# 
-
-# 3\. \*\*Start development server\*\*
-
-# &#x20;  ```bash
-
-# &#x20;  npm run dev
-
-# &#x20;  ```
-
-# 
-
-# The frontend will start on `http://localhost:5173`
-
-# 
-
-# \##  API Documentation
-
-# 
-
-# \### Authentication Endpoints
-
-# \- `POST /api/auth/login` - User login
-
-# \- `POST /api/auth/register` - User registration
-
-# 
-
-# \### Campaign Endpoints
-
-# \- `GET /api/campaigns` - Get all campaigns (filtered by role)
-
-# \- `GET /api/campaigns/{id}` - Get campaign details
-
-# \- `POST /api/campaigns` - Create new campaign (STARTUP/ADMIN only)
-
-# \- `PUT /api/campaigns/{id}` - Update campaign
-
-# \- `DELETE /api/campaigns/{id}` - Delete campaign (ADMIN only)
-
-# \- `PUT /api/campaigns/{id}/approve` - Approve campaign (ADMIN only)
-
-# 
-
-# \### Other Endpoints
-
-# \- `/api/contributions` - Manage campaign contributions
-
-# \- `/api/subscriptions` - Subscription management
-
-# \- `/api/categories` - Campaign categories
-
-# \- `/api/currencies` - Supported currencies
-
-# 
-
-# \##  Project Structure
-
-# 
-
-# ```
-
-# crowdfunding-platform/
-
-# ├── backend/
-
-# │   └── crowdfunding-api/
-
-# │       ├── src/main/java/com/crowdfunding/
-
-# │       │   ├── controller/     # REST controllers
-
-# │       │   ├── entity/         # JPA entities
-
-# │       │   ├── repository/     # Data repositories
-
-# │       │   ├── service/        # Business logic
-
-# │       │   ├── security/       # Authentication \& security
-
-# │       │   ├── config/         # Configuration classes
-
-# │       │   └── dto/           # Data transfer objects
-
-# │       └── src/main/resources/
-
-# │           ├── application.properties
-
-# │           └── data.sql       # Initial data
-
-# └── frontend/
-
-# &#x20;   └── crowdfunding-app/
-
-# &#x20;       ├── src/
-
-# &#x20;       │   ├── components/     # Reusable UI components
-
-# &#x20;       │   ├── pages/         # Page components
-
-# &#x20;       │   ├── services/      # API service functions
-
-# &#x20;       │   └── assets/        # Static assets
-
-# &#x20;       ├── public/           # Public static files
-
-# &#x20;       └── package.json
-
-# ```
-
-# 
-
-# \##  Security Features
-
-# 
-
-# \- JWT-based authentication
-
-# \- Role-based access control (RBAC)
-
-# \- Password hashing
-
-# \- CORS configuration
-
-# \- Input validation
-
-# \- Secure payment processing
-
-# 
-
-# \##  Deployment
-
-# 
-
-# \### Backend Deployment
-
-# ```bash
-
-# cd backend/crowdfunding-api
-
-# mvn clean package
-
-# java -jar target/crowdfunding-api-0.0.1-SNAPSHOT.jar
-
-# ```
-
-# 
-
-# \### Frontend Deployment
-
-# ```bash
-
-# cd frontend/crowdfunding-app
-
-# npm run build
-
-# \# Deploy the dist/ folder to your web server
-
-# ```
-
-# 
-
-# \##  Contributing
-
-# 
-
-# 1\. Fork the repository
-
-# 2\. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-
-# 3\. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-
-# 4\. Push to the branch (`git push origin feature/AmazingFeature`)
-
-# 5\. Open a Pull Request
-
-# 
-
-# \##  License
-
-# 
-
-# This project is licensed under the MIT License - see the LICENSE file for details.
-
-# 
-
-# \##  Contact
-
-# 
-
-# For questions or support, please open an issue in this repository.
-
-# 
-
-# \---
-
-# 
-
-# \*\*Note\*\*: This is a development project. For production use, ensure proper security configurations and testing.</content>
-
-# <parameter name="filePath">e:\\project (2)\\project\\project\\crowdfunding-platform\\README.md
-
+| Layer | Technology |
+|---|---|
+| Backend | Java 17, Spring Boot 3.2, Spring Data JPA |
+| Auth | Spring Security with JWT (BCrypt password hashing) |
+| Database | MySQL 8 |
+| Payments | Razorpay Java SDK |
+| Frontend | React 19, React Router DOM, Axios, Vite |
+
+---
+
+## Features
+
+### Authentication & Role-Based Access
+- Signup and login with JWT-based authentication
+- Passwords hashed with BCrypt
+- Three roles: **Admin**, **Startup**, **Investor**
+- Each role gets a separate dashboard and permissions
+
+### Campaign Management
+- Startups can create, edit, and manage campaigns
+- Admin approves campaigns before they go live
+- Campaign statuses: **Pending → Active → Completed**
+- Campaigns organised by category (Technology, Health, Education, etc.)
+
+### Investment & Contributions
+- Investors can browse active campaigns and contribute
+- Real-time funding progress tracking
+- Multi-currency support: INR, USD, EUR
+- Secure payments via Razorpay payment gateway
+
+### Subscription System
+- Flexible plans: 3, 6, and 12-month options
+- Role-specific pricing for Investors and Startups
+- Subscription management with Razorpay integration
+
+### Role-Based Access Control
+
+| Action | Admin | Startup | Investor |
+|---|---|---|---|
+| Approve/reject campaigns | ✅ | ❌ | ❌ |
+| Create campaigns | ❌ | ✅ | ❌ |
+| Contribute to campaigns | ❌ | ❌ | ✅ |
+| View all campaigns | ✅ | ✅ own | ✅ active |
+| Manage users | ✅ | ❌ | ❌ |
+
+---
+
+## Running Locally
+
+### Prerequisites
+- Java 17+
+- Maven 3.6+
+- Node.js 18+
+- MySQL 8 running locally
+- Razorpay account (optional, for payments)
+
+### Backend
+
+```bash
+# 1. Create the database
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS crowdfunding_db;"
+
+# 2. Update credentials in:
+# backend/crowdfunding-api/src/main/resources/application.properties
+spring.datasource.url=jdbc:mysql://localhost:3306/crowdfunding_db
+spring.datasource.username=root
+spring.datasource.password=your_password
+
+# 3. (Optional) Add Razorpay keys in application.properties
+razorpay.key.id=your_key_id
+razorpay.key.secret=your_key_secret
+
+# 4. Build and run
+cd backend/crowdfunding-api
+mvn clean install
+mvn spring-boot:run
+```
+
+Backend runs at `http://localhost:8080/api`
+
+### Frontend
+
+```bash
+cd frontend/crowdfunding-app
+npm install
+npm run dev
+```
+
+Frontend runs at `http://localhost:5173`
+
+---
+
+## API Reference
+
+### Auth
+| Method | Endpoint | Access |
+|---|---|---|
+| POST | `/api/auth/register` | Public |
+| POST | `/api/auth/login` | Public |
+
+### Campaigns
+| Method | Endpoint | Access |
+|---|---|---|
+| GET | `/api/campaigns` | All roles |
+| GET | `/api/campaigns/:id` | All roles |
+| POST | `/api/campaigns` | Startup, Admin |
+| PUT | `/api/campaigns/:id` | Startup (own), Admin |
+| DELETE | `/api/campaigns/:id` | Admin |
+| PUT | `/api/campaigns/:id/approve` | Admin only |
+
+### Other Endpoints
+| Endpoint | Description |
+|---|---|
+| `/api/contributions` | Manage campaign contributions |
+| `/api/subscriptions` | Subscription management |
+| `/api/categories` | Campaign categories |
+| `/api/currencies` | Supported currencies |
+
+---
+
+## Project Structure
+
+```
+crowdfunding-platform/
+├── backend/
+│   └── crowdfunding-api/
+│       └── src/main/java/com/crowdfunding/
+│           ├── controller/     REST controllers
+│           ├── entity/         JPA entities
+│           ├── repository/     Data repositories
+│           ├── service/        Business logic
+│           ├── security/       JWT auth & filters
+│           ├── config/         App configuration
+│           └── dto/            Data transfer objects
+└── frontend/
+    └── crowdfunding-app/
+        └── src/
+            ├── components/     Reusable UI components
+            ├── pages/          Page components
+            └── services/       Axios API functions
+```
+
+---
+
+## Security
+- JWT-based stateless authentication
+- Role-based access control (RBAC) on all protected routes
+- BCrypt password hashing
+- CORS configuration for frontend-backend communication
+- Input validation and global error handling
+- Secure Razorpay payment processing
