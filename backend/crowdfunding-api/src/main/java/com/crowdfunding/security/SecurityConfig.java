@@ -63,6 +63,7 @@ public class SecurityConfig {
                         .requestMatchers("/currencies/**").permitAll()
                         .requestMatchers("/user-types/**").permitAll()
                         .requestMatchers("/subscriptions/plans").permitAll()
+                        .requestMatchers("/health", "/auth/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
